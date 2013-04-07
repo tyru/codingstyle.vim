@@ -19,7 +19,7 @@ endfunction "}}}
 
 
 
-let s:CHANGE_SPACE_INDENT_USAGE = ':CSChangeSpaceIndent [-help] {before sp num} [{after sp num}]'
+let s:CHANGE_SPACE_INDENT_USAGE = 'Usage: CSChangeSpaceIndent [-help] {before sp num} [{after sp num}]'
 function! codingstyle#cmd_change_space_indent(...) "{{{
     if a:0 is 0 || match(a:000, '-\?-help\(\s\|$\)'.'\C') isnot -1
         echo s:CHANGE_SPACE_INDENT_USAGE
@@ -55,7 +55,7 @@ endfunction "}}}
 
 
 
-let s:UNRETAB_USAGE = ':CSUnretab [-help] {before sp num} [{after sp num}]'
+let s:UNRETAB_USAGE = 'Usage: CSUnretab [-help] {before sp num} [{after sp num}]'
 function! codingstyle#cmd_unretab(begin, end, q_args) "{{{
     if a:q_args =~# '-\?-help\(\s\|$\)'
         echo s:UNRETAB_USAGE
