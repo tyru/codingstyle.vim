@@ -11,7 +11,7 @@ set cpo&vim
 function! s:warn(msg) "{{{
     echohl WarningMsg
     try
-        echomsg a:msg
+        echo a:msg
     finally
         echohl None
     endtry
@@ -79,9 +79,13 @@ function! codingstyle#cmd_unretab(begin, end, q_args) "{{{
 
     let pattern = '^\(\%( \{' . tabstop . '}\)\+\)\( *\)'
     let replacement = '\=repeat("\t", strlen(submatch(1)) / ' . tabstop . ') . submatch(2)'
-    execute
-    \   a:begin . ',' . a:end
-    \   's:' . pattern . ':' . replacement . ':'
+    try
+        execute
+        \   a:begin . ',' . a:end
+        \   's:' . pattern . ':' . replacement . ':'
+    catch /E486:/
+        call s:warn('CSUnretab: no whitespaces found.')
+    endtry
 endfunction "}}}
 
 let s:UNRETAB_OPTIONS = ['-help']
