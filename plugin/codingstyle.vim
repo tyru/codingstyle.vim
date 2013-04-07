@@ -14,16 +14,16 @@ set cpo&vim
 
 
 command!
-\   -bar -range=% -nargs=?
-\   -complete=customlist,codingstyle#cmd_complete_unretab
-\   CSUnretab
-\   call codingstyle#cmd_unretab(<line1>, <line2>, <q-args>)
-
-command!
 \   -nargs=* -bar
 \   -complete=customlist,codingstyle#cmd_complete_change_space_indent
 \   CSChangeSpaceIndent
 \   call codingstyle#cmd_change_space_indent(<f-args>)
+
+command!
+\   -bar -range=% -nargs=?
+\   -complete=customlist,codingstyle#cmd_complete_unretab
+\   CSUnretab
+\   call codingstyle#cmd_unretab(<line1>, <line2>, <q-args>)
 
 
 " Restore 'cpoptions' {{{
