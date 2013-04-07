@@ -53,6 +53,15 @@ function! s:do_change_space_indent(before, after) "{{{
     \   . '):'
 endfunction "}}}
 
+let s:CHANGE_SPACE_INDENT_OPTIONS = ['-help']
+function! codingstyle#cmd_complete_change_space_indent(arglead, cmdline, cursorpos) "{{{
+    if a:cmdline =~# '^\s*$'
+        return s:CHANGE_SPACE_INDENT_OPTIONS
+    endif
+    let options = copy(s:CHANGE_SPACE_INDENT_OPTIONS)
+    return filter(options, 'v:val =~# "^" . a:arglead')
+endfunction "}}}
+
 
 
 let s:UNRETAB_USAGE = 'Usage: CSUnretab [-help] {before sp num} [{after sp num}]'

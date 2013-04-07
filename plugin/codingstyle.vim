@@ -21,6 +21,7 @@ command!
 
 command!
 \   -nargs=* -bar
+\   -complete=customlist,codingstyle#cmd_complete_change_space_indent
 \   CSChangeSpaceIndent
 \   call codingstyle#cmd_change_space_indent(<f-args>)
 
