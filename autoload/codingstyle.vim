@@ -64,7 +64,7 @@ endfunction "}}}
 
 
 
-let s:UNRETAB_USAGE = 'Usage: CSUnretab [-help] {before sp num} [{after sp num}]'
+let s:UNRETAB_USAGE = 'Usage: CSUnretab [-help] [{tabstop}]'
 function! codingstyle#cmd_unretab(begin, end, q_args) "{{{
     if a:q_args =~# '-\?-help\(\s\|$\)'
         echo s:UNRETAB_USAGE
