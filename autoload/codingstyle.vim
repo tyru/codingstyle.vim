@@ -19,9 +19,9 @@ endfunction "}}}
 
 
 
-let s:CHANGE_SPACE_INDENT_USAGE = ':ChangeSpaceIndent {before sp num} [{after sp num}]'
+let s:CHANGE_SPACE_INDENT_USAGE = ':ChangeSpaceIndent [-help] {before sp num} [{after sp num}]'
 function! codingstyle#cmd_change_space_indent(...) "{{{
-    if a:0 is 0
+    if a:0 is 0 || match(a:000, '-\?-help\(\s\|$\)'.'\C') isnot -1
         echo s:CHANGE_SPACE_INDENT_USAGE
         return
     endif
