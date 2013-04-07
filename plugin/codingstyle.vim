@@ -16,7 +16,7 @@ set cpo&vim
 command!
 \   -bar -range=% -nargs=?
 \   CSUnretab
-\   call codingstyle#cmd_unretab(<line1>, <line2>, <q-args> !=# '' ? str2nr(<q-args>) : &tabstop)
+\   call codingstyle#cmd_unretab(<line1>, <line2>, <q-args>)
 
 command!
 \   -nargs=* -bar

@@ -55,14 +55,21 @@ endfunction "}}}
 
 
 
-function! codingstyle#cmd_unretab(begin, end, tabstop) "{{{
-    if type(a:tabstop) isnot type(0)
+let s:UNRETAB_USAGE = ':CSUnretab [-help] {before sp num} [{after sp num}]'
+function! codingstyle#cmd_unretab(begin, end, q_args) "{{{
+    if a:q_args =~# '-\?-help\(\s\|$\)'
+        echo s:UNRETAB_USAGE
+        return
+    endif
+
+    let tabstop = a:q_args !=# '' ? str2nr(a:q_args) : &tabstop
+    if type(tabstop) isnot type(0)
         call s:warn('CSUnretab: invalid tabstop was given.')
         return
     endif
 
-    let pattern = '^\(\%( \{' . a:tabstop . '}\)\+\)\( *\)'
-    let replacement = '\=repeat("\t", strlen(submatch(1)) / ' . a:tabstop . ') . submatch(2)'
+    let pattern = '^\(\%( \{' . tabstop . '}\)\+\)\( *\)'
+    let replacement = '\=repeat("\t", strlen(submatch(1)) / ' . tabstop . ') . submatch(2)'
     execute
     \   a:begin . ',' . a:end
     \   's:' . pattern . ':' . replacement . ':'
