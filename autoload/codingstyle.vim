@@ -75,6 +75,15 @@ function! codingstyle#cmd_unretab(begin, end, q_args) "{{{
     \   's:' . pattern . ':' . replacement . ':'
 endfunction "}}}
 
+let s:UNRETAB_OPTIONS = ['-help']
+function! codingstyle#cmd_complete_unretab(arglead, cmdline, cursorpos) "{{{
+    if a:cmdline =~# '^\s*$'
+        return s:UNRETAB_OPTIONS
+    endif
+    let options = copy(s:UNRETAB_OPTIONS)
+    return filter(options, 'v:val =~# "^" . a:arglead')
+endfunction "}}}
+
 
 
 " Restore 'cpoptions' {{{
